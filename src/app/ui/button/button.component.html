@@ -1,0 +1,9 @@
+<button *ngIf="btnType === 'button'" mat-button color="{{ btnColor }}">
+  {{ btnLabel }}
+</button>
+<button *ngIf="btnType === 'stroked'" mat-stroked-button color="{{ btnColor }}">
+  {{ btnLabel }}
+</button>
+<button *ngIf="btnType === 'flat'" mat-flat-button color="{{ btnColor }}">
+  {{ btnLabel }}
+</button>

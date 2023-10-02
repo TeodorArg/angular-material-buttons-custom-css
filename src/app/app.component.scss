@@ -1,0 +1,10 @@
+@import "sass-rem";
+
+.wrapper {
+  padding: rem(50px);
+}
+
+app-button {
+  display: inline-block;
+  margin: rem(0 8px 16px);
+}

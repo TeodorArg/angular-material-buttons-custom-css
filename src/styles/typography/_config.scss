@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$heading-font-family: "'Work Sans', sans-serif";
+
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-primary,
+      accent: $custom-accent,
+    ),
+  )
+);

@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+@use "./styles/typography/config" as typography;
+
+@debug "#{typography}";
+@import "./styles/themes.scss";
+
+@include mat.core();
+
+@include mat.core-theme($my-app-light-theme);
+@include mat.button-theme($my-app-light-theme);
+
+//@include mat.core(typography.$my-app-typography);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
