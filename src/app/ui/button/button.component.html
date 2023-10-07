@@ -1,9 +1,28 @@
-<button *ngIf="btnType === 'button'" mat-button color="{{ btnColor }}">
-  {{ btnLabel }}
+<button
+  *ngIf="btnType === 'button'"
+  mat-button
+  color="{{ btnColor }}"
+  cdkFocusInitial
+>
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
 </button>
-<button *ngIf="btnType === 'stroked'" mat-stroked-button color="{{ btnColor }}">
-  {{ btnLabel }}
+<button
+  *ngIf="btnType === 'stroked'"
+  mat-stroked-button
+  color="{{ btnColor }}"
+  cdkFocusInitial
+>
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
 </button>
-<button *ngIf="btnType === 'flat'" mat-flat-button color="{{ btnColor }}">
-  {{ btnLabel }}
+<button
+  *ngIf="btnType === 'flat'"
+  mat-flat-button
+  color="{{ btnColor }}"
+  cdkFocusInitial
+>
+  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
 </button>
+
+<ng-template #buttonContent>
+  {{ btnLabel }}
+</ng-template>

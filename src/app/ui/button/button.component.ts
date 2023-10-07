@@ -8,7 +8,16 @@ import { Component, Input } from '@angular/core';
 export class ButtonComponent {
   @Input() public btnType: 'button' | 'stroked' | 'flat' = 'button';
 
-  @Input() public btnColor: 'primary' | 'accent' | 'warn' = 'primary';
+  @Input() public btnColor:
+    | 'primary'
+    | 'secondary'
+    | 'accent'
+    | 'warn'
+    | 'green-btn'
+    | 'red-btn'
+    | 'yellow-btn'
+    | 'dark-btn'
+    | 'white-btn' = 'primary';
 
   @Input() public btnLabel = '';
 }

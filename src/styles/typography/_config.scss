@@ -1,13 +1,33 @@
-@use "sass:map";
+@use "sass:math";
 @use "@angular/material" as mat;
 
-$heading-font-family: "'Work Sans', sans-serif";
+@include mat.core();
 
-$custom-theme: mat.define-light-theme(
+@import "../core/core.scss";
+
+// Reset Font-Family in all components & font-sizes for h1, h2, h3 see more here: https://material.angular.io/guide/typography
+$reset-components-font: mat.define-typography-config(
+  $font-family: "Nunito Sans",
+  $headline-5: mat.define-typography-level(rem(32px), rem(40px), 400),
+  $headline-6: mat.define-typography-level(rem(24px), rem(32px), 700),
+  $subtitle-1: mat.define-typography-level(rem(20px), rem(24px), 700),
+  $subtitle-2: mat.define-typography-level(rem(18px), rem(24px), 700),
+  $body-1: mat.define-typography-level(rem(16px), rem(24px), 400),
+  $body-2: mat.define-typography-level(rem(14px), rem(16px), 400),
+  $button: mat.define-typography-level(rem(16px), rem(24px), 600),
+);
+
+$reset-theme-style: mat.define-light-theme(
   (
-    color: (
-      primary: $custom-primary,
-      accent: $custom-accent,
-    ),
+    typography: $reset-components-font,
   )
 );
+
+@include mat.all-component-typographies($reset-theme-style);
+
+// Fix body font-size in material themes
+.mat-typography {
+  font-size: rem(16px);
+  line-height: rem(24px);
+  font-weight: normal;
+}

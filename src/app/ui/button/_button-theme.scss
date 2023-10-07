@@ -1,0 +1,87 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+@use "/node_modules/@material/button/button-text-theme" as mdc-button-text-theme;
+@use "/node_modules/@material/button/button-filled-theme" as
+  mdc-button-filled-theme;
+@use "/node_modules/@material/button/button-protected-theme" as
+  mdc-button-protected-theme;
+@use "/node_modules/@material/button/button-outlined-theme" as
+  mdc-button-outlined-theme;
+
+@mixin _button-variant($color) {
+  @include mdc-button-text-theme.theme(
+    (
+      label-text-color: $color,
+    )
+  );
+}
+
+@mixin _unelevated-button-variant($foreground, $background) {
+  @debug "#{$foreground}";
+  @debug "#{$background}";
+  @include mdc-button-filled-theme.theme(
+    (
+      container-color: $background,
+      label-text-color: $foreground,
+    )
+  );
+}
+
+@mixin _raised-button-variant($foreground, $background) {
+  @include mdc-button-protected-theme.theme(
+    (
+      container-color: $background,
+      label-text-color: $foreground,
+    )
+  );
+}
+
+@mixin _outlined-button-variant($color) {
+  @include mdc-button-outlined-theme.theme(
+    (
+      label-text-color: $color,
+    )
+  );
+}
+
+@mixin color($variants) {
+  .mat-mdc-button {
+    @each $variant, $variant-palette in $variants {
+      &.mat-#{$variant} {
+        @include _button-variant(mat.get-color-from-palette($variant-palette));
+      }
+    }
+  }
+
+  .mat-mdc-unelevated-button {
+    @each $variant, $variant-palette in $variants {
+      &.mat-#{$variant} {
+        @include _unelevated-button-variant(
+          mat.get-contrast-color-from-palette($variant-palette, 500),
+          mat.get-color-from-palette($variant-palette)
+        );
+      }
+    }
+  }
+
+  .mat-mdc-raised-button {
+    @each $variant, $variant-palette in $variants {
+      &.mat-#{$variant} {
+        @include _outlined-button-variant(
+          mat.get-color-from-palette($variant-palette)
+        );
+      }
+    }
+  }
+
+  .mat-mdc-outlined-button {
+    @each $variant, $variant-palette in $variants {
+      &.mat-#{$variant} {
+        @include _outlined-button-variant(
+          mat.get-color-from-palette($variant-palette)
+        );
+      }
+    }
+  }
+}

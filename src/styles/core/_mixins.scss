@@ -1,0 +1,45 @@
+@mixin font($font-size, $line-height) {
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin flex(
+  $align-items: center,
+  $justify-content: center,
+  $flex-direction: row,
+  $display-inline: false
+) {
+  @if ($display-inline) {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-direction: $flex-direction;
+}
+
+@mixin hover($color1, $color2) {
+  color: $color1;
+  transition: color 0.25s ease;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: $color2;
+  }
+}
+
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
