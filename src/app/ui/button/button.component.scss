@@ -24,3 +24,8 @@ $buttons-variants: (
 );
 
 @include button.color($buttons-variants);
+
+// Fix Default Materials Style
+.mdc-button {
+  height: rem(48px);
+}
