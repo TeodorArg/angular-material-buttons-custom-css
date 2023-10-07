@@ -29,12 +29,10 @@
   <app-button btnType="flat" btnColor="accent" btnLabel="Accent"></app-button>
   <app-button btnType="flat" btnColor="warn" btnLabel="Warn"></app-button>
 
-  <h2>Custom Buttons</h2>
+  <h2>Custom Buttons Base</h2>
   <app-button btnColor="green-btn" btnLabel="Green Btn"></app-button>
   <app-button btnColor="red-btn" btnLabel="Red Btn"></app-button>
   <app-button btnColor="yellow-btn" btnLabel="Yellow Btn"></app-button>
-  <app-button btnColor="dark-btn" btnLabel="Dark Btn"></app-button>
-  <app-button btnColor="white-btn" btnLabel="White Btn"></app-button>
 
   <h2>Custom Buttons Flat</h2>
   <app-button
@@ -63,6 +61,26 @@
     btnLabel="White Btn Flat"
   ></app-button>
 
+  <h2>Custom Buttons Flat Disabled</h2>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    btnLabel="Green Btn Flat"
+    disabled="true"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="red-btn"
+    btnLabel="Red Btn Flat"
+    disabled="true"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="yellow-btn"
+    btnLabel="Yellow Btn Flat"
+    disabled="true"
+  ></app-button>
+
   <h2>Custom Buttons Stroked</h2>
   <app-button
     btnType="stroked"
@@ -88,5 +106,35 @@
     btnType="stroked"
     btnColor="white-btn"
     btnLabel="White Btn Stroked"
+  ></app-button>
+
+  <h2>Custom Buttons different heights</h2>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    [btnSquare]="true"
+    btnHeight="24"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    [btnSquare]="true"
+    btnHeight="32"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    [btnSquare]="true"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    btnLabel="Green Btn Flat"
+    btnHeight="32"
+  ></app-button>
+  <app-button
+    btnType="flat"
+    btnColor="green-btn"
+    btnLabel="Green Btn Flat"
   ></app-button>
 </div>

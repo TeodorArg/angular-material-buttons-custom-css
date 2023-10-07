@@ -3,26 +3,46 @@
   mat-button
   color="{{ btnColor }}"
   cdkFocusInitial
+  [disabled]="disabled"
+  class="btn-{{ btnHeightClass }}"
+  [ngClass]="{ square: btnSquare }"
 >
-  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  <ng-container
+    *ngTemplateOutlet="btnSquare ? btnIconTmpl : buttonContent"
+  ></ng-container>
 </button>
 <button
   *ngIf="btnType === 'stroked'"
   mat-stroked-button
   color="{{ btnColor }}"
   cdkFocusInitial
+  [disabled]="disabled"
+  class="btn-{{ btnHeightClass }}"
+  [ngClass]="{ square: btnSquare }"
 >
-  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  <ng-container
+    *ngTemplateOutlet="btnSquare ? btnIconTmpl : buttonContent"
+  ></ng-container>
 </button>
 <button
   *ngIf="btnType === 'flat'"
   mat-flat-button
   color="{{ btnColor }}"
   cdkFocusInitial
+  [disabled]="disabled"
+  class="btn-{{ btnHeightClass }}"
+  [ngClass]="{ square: btnSquare }"
 >
-  <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  <ng-container
+    *ngTemplateOutlet="btnSquare ? btnIconTmpl : buttonContent"
+  ></ng-container>
 </button>
 
 <ng-template #buttonContent>
   {{ btnLabel }}
+</ng-template>
+
+<!-- Icon Tmpl -->
+<ng-template #btnIconTmpl>
+  <mat-icon>{{ btnIcon }}</mat-icon>
 </ng-template>

@@ -25,7 +25,45 @@ $buttons-variants: (
 
 @include button.color($buttons-variants);
 
+// Custom styles for buttons
+
+$btnSize: ((24, 4), (32, 6), (48, 8)); // Array of buttons heights from Figma
+
+@mixin button_height {
+  @for $i from 1 through length($btnSize) {
+    &.btn-#{nth(nth($btnSize, $i), 1)} {
+      height: rem(#{nth(nth($btnSize, $i), 1)}px);
+      &.square {
+        min-width: rem(#{nth(nth($btnSize, $i), 1)}px);
+        padding: 0;
+      }
+      @if (#{nth(nth($btnSize, $i), 1)} == "24") {
+        .material-icons {
+          font-size: rem(14px);
+          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
+        }
+        border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
+        padding: rem(4px 10px);
+      }
+      @if (#{nth(nth($btnSize, $i), 1)} == "32") {
+        .material-icons {
+          font-size: rem(20px);
+          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
+          width: rem(#{nth(nth($btnSize, $i), 1)}px);
+          height: rem(#{nth(nth($btnSize, $i), 1)}px);
+        }
+        border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
+        padding: 0 rem(6px);
+      }
+      @if (#{nth(nth($btnSize, $i), 1)} == "48") {
+        border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
+        padding: 0 rem(24px);
+      }
+    }
+  }
+}
+
 // Fix Default Materials Style
 .mdc-button {
-  height: rem(48px);
+  @include button-height;
 }

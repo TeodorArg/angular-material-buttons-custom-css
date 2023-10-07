@@ -9,6 +9,8 @@
 @use "/node_modules/@material/button/button-outlined-theme" as
   mdc-button-outlined-theme;
 
+@use "/node_modules/@angular/material/button/button-theme-private";
+
 @mixin _button-variant($color) {
   @include mdc-button-text-theme.theme(
     (
@@ -18,8 +20,6 @@
 }
 
 @mixin _unelevated-button-variant($foreground, $background) {
-  @debug "#{$foreground}";
-  @debug "#{$background}";
   @include mdc-button-filled-theme.theme(
     (
       container-color: $background,
@@ -28,19 +28,12 @@
   );
 }
 
-@mixin _raised-button-variant($foreground, $background) {
-  @include mdc-button-protected-theme.theme(
-    (
-      container-color: $background,
-      label-text-color: $foreground,
-    )
-  );
-}
-
-@mixin _outlined-button-variant($color) {
+@mixin _outlined-button-variant($color, $outline-color, $width) {
   @include mdc-button-outlined-theme.theme(
     (
       label-text-color: $color,
+      outline-width: $width,
+      outline-color: $outline-color,
     )
   );
 }
@@ -59,18 +52,33 @@
       &.mat-#{$variant} {
         @include _unelevated-button-variant(
           mat.get-contrast-color-from-palette($variant-palette, 500),
-          mat.get-color-from-palette($variant-palette)
+          mat.get-color-from-palette($variant-palette, 500)
         );
-      }
-    }
-  }
-
-  .mat-mdc-raised-button {
-    @each $variant, $variant-palette in $variants {
-      &.mat-#{$variant} {
-        @include _outlined-button-variant(
-          mat.get-color-from-palette($variant-palette)
-        );
+        &:hover {
+          @include _unelevated-button-variant(
+            mat.get-contrast-color-from-palette($variant-palette, 600),
+            mat.get-color-from-palette($variant-palette, 600)
+          );
+        }
+        &.cdk-focused {
+          @include _unelevated-button-variant(
+            mat.get-contrast-color-from-palette($variant-palette, 700),
+            mat.get-color-from-palette($variant-palette, 700)
+          );
+        }
+        @include button-theme-private.apply-disabled-style() {
+          @include mdc-button-filled-theme.theme(
+            (
+              disabled-container-color:
+                rgba(mat.get-color-from-palette($variant-palette, 500), 0.4),
+              disabled-label-text-color:
+                mat.get-contrast-color-from-palette($variant-palette, 500),
+              container-color: mat.get-color-from-palette($variant-palette, 500),
+              label-text-color:
+                mat.get-color-from-palette($variant-palette, 500),
+            )
+          );
+        }
       }
     }
   }
@@ -79,7 +87,9 @@
     @each $variant, $variant-palette in $variants {
       &.mat-#{$variant} {
         @include _outlined-button-variant(
-          mat.get-color-from-palette($variant-palette)
+          mat.get-color-from-palette($variant-palette),
+          mat.get-color-from-palette($variant-palette),
+          2px
         );
       }
     }
