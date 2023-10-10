@@ -4,16 +4,7 @@
 
 @use "../../../styles/palette/teo-palette" as palette;
 
-@import "../../../styles/core/rem_calc";
-
-/*
-$red-palette, $pink-palette, $indigo-palette,
-  $purple-palette, $deep-purple-palette, $blue-palette, $light-blue-palette, $cyan-palette,
-  $teal-palette, $green-palette, $light-green-palette, $lime-palette, $yellow-palette,
-  $amber-palette, $orange-palette, $deep-orange-palette, $brown-palette, $grey-palette,
-  $gray-palette, $blue-grey-palette, $blue-gray-palette, $light-theme-background-palette,
-  $dark-theme-background-palette, $light-theme-foreground-palette, $dark-theme-foreground-palette;
-*/
+@import "../../../styles/core/core.scss";
 
 $buttons-variants: (
   green-btn: mat.define-palette(palette.$green-palette),
@@ -33,34 +24,45 @@ $btnSize: ((24, 4), (32, 6), (48, 8)); // Array of buttons heights from Figma
   @for $i from 1 through length($btnSize) {
     &.btn-#{nth(nth($btnSize, $i), 1)} {
       height: rem(#{nth(nth($btnSize, $i), 1)}px);
+      .material-icons {
+        @include flex(center, center, row, true);
+      }
       &.square {
         min-width: rem(#{nth(nth($btnSize, $i), 1)}px);
         padding: 0;
       }
       @if (#{nth(nth($btnSize, $i), 1)} == "24") {
-        .material-icons {
-          font-size: rem(14px);
-          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
-        }
         border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
         padding: rem(4px 10px);
+        .material-icons {
+          font-size: rem(14px);
+          height: rem(#{nth(nth($btnSize, $i), 1)}px);
+          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
+        }
       }
       @if (#{nth(nth($btnSize, $i), 1)} == "32") {
         .material-icons {
           font-size: rem(20px);
-          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
           width: rem(#{nth(nth($btnSize, $i), 1)}px);
           height: rem(#{nth(nth($btnSize, $i), 1)}px);
+          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
         }
+
         border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
         padding: 0 rem(6px);
       }
       @if (#{nth(nth($btnSize, $i), 1)} == "48") {
         border-radius: rem(#{nth(nth($btnSize, $i), 2)}px);
         padding: 0 rem(24px);
+        .material-icons {
+          font-size: rem(28px);
+          height: rem(#{nth(nth($btnSize, $i), 1)}px);
+          line-height: rem(#{nth(nth($btnSize, $i), 1)}px);
+        }
       }
     }
   }
+  @include flex();
 }
 
 // Fix Default Materials Style

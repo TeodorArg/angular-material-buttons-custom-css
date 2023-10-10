@@ -11,6 +11,11 @@
 
 @use "/node_modules/@angular/material/button/button-theme-private";
 
+@use "/node_modules/@angular/material/core/mdc-helpers/mdc-helpers";
+@use "/node_modules/@angular/material/core/theming/theming";
+
+@use "@material/theme/theme-color" as mdc-theme-color;
+
 @mixin _button-variant($color) {
   @include mdc-button-text-theme.theme(
     (
@@ -54,18 +59,9 @@
           mat.get-contrast-color-from-palette($variant-palette, 500),
           mat.get-color-from-palette($variant-palette, 500)
         );
-        &:hover {
-          @include _unelevated-button-variant(
-            mat.get-contrast-color-from-palette($variant-palette, 600),
-            mat.get-color-from-palette($variant-palette, 600)
-          );
-        }
-        &.cdk-focused {
-          @include _unelevated-button-variant(
-            mat.get-contrast-color-from-palette($variant-palette, 700),
-            mat.get-color-from-palette($variant-palette, 700)
-          );
-        }
+
+        transition: all 0.25s linear;
+
         @include button-theme-private.apply-disabled-style() {
           @include mdc-button-filled-theme.theme(
             (
@@ -77,6 +73,25 @@
               label-text-color:
                 mat.get-color-from-palette($variant-palette, 500),
             )
+          );
+        }
+
+        .mat-mdc-button-persistent-ripple::before {
+          display: none;
+        }
+
+        &:hover {
+          @include _unelevated-button-variant(
+            mat.get-contrast-color-from-palette($variant-palette, 600),
+            mat.get-color-from-palette($variant-palette, 600)
+          );
+        }
+
+        &:active,
+        &.cdk-focused {
+          @include _unelevated-button-variant(
+            mat.get-contrast-color-from-palette($variant-palette, 700),
+            mat.get-color-from-palette($variant-palette, 700)
           );
         }
       }
@@ -91,6 +106,12 @@
           mat.get-color-from-palette($variant-palette),
           2px
         );
+        &:hover {
+          background-color: rgba(
+            mat.get-color-from-palette($variant-palette, 500),
+            0.4
+          );
+        }
       }
     }
   }
