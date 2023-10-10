@@ -1,29 +1,21 @@
 # AngularMaterialButtonsCustomCss
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
-
 Full customization css for mat-button / Personalización completa css para mat-button
 
-## Development server
+## What is this demo for?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Sometimes we need to use custom mat-buttons or/and we need to use custom styles for buttons, or we need to add another types for theme(not like primary, accent, warn)
+In the latest releases of Angular Material, theming API has been reworked.
+In this demo, you can see who to custom theme for mat-button, modifying typography and used mat-button as module in @ui/ (for example).
 
-## Code scaffolding
+## Project structure:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+src/styles.scss - main scss, used only for typography for all components, but you can put typography in src/app/ui/button/button.component.scss;
+src/app/ui/button/button.component.scss - scss for buttons, here you can put you custom classes for buttons;
+src/app/ui/button/\_button-theme.scss - scss for redefine angular material @mixins (only for mat-buttons);
+src/app/ui/button/button.component.ts - here i put some custom propertie for <app-button></app-button> component;
 
 ## Further help
 
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
